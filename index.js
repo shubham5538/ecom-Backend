@@ -7,9 +7,6 @@ const dotenv = require("dotenv").config();
 const stripe = require("@stripe/stripe-js");
 
 
-
-
-
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
@@ -22,6 +19,17 @@ mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => console.log("Connect to Databse"))
   .catch((err) => console.log(err));
+
+
+// Contact Page Schema 
+
+const contactSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  message: String,
+});
+
+const contactModel = mongoose.model("contact", contactSchema);
 
 //schema
 const userSchema = mongoose.Schema({
@@ -94,6 +102,30 @@ app.post("/login", async (req, res) => {
     res.status(500).send({ message: "Error occurred during login", alert: false });
   }
 });
+
+
+// Contact Schema 
+app.post("/contact", async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+
+    const newContact = new contactModel({
+      name: name,
+      email: email,
+      message: message,
+    });
+
+    const savedContact = await newContact.save();
+    console.log("Contact form data saved:", savedContact);
+    res.status(200).json({ message: "Contact form submitted successfully" });
+  } catch (error) {
+    console.error("Error submitting contact form:", error);
+    res.status(500).json({ message: "Error submitting contact form" });
+  }
+});
+
+
+
 
 //product section
 
