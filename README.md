@@ -1,5 +1,5 @@
 # ecom-Backend
-Ecommercewebsite- MERN Project 
+Ecommerce Website- MERN Project 
 ( React JS, MongoDB, Express JS, Node JS)
 
 Welcome to Ecommerce Website, a simple web applicationfor your Online Shopping Website.
