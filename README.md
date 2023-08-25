@@ -39,4 +39,4 @@ Shubham Patil
 # Contact
 email- shubhampatil080699@gmail.com
 
-Deployed link (Backend) - https://ecom-backend-2sm7.onrender.com
+Deployed link (Backend) - https://ecom-backend-2sm7.onrender.com/
